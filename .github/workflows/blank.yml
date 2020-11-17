@@ -34,4 +34,4 @@ jobs:
       - name: Create Zip File
         uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -qq -r test.zip Test/test.txt
+          args: zip -qq -r test.zip Test
