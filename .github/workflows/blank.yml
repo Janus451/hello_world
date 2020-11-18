@@ -24,7 +24,9 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Build .zip file
-        run: zip -r /$GITHUB_WORKSPACE/test.zip ./test/*
+        run: |
+         zip -r /$GITHUB_WORKSPACE/test.zip ./test/*
+         ls
           
 
       
