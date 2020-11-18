@@ -27,6 +27,11 @@ jobs:
         run: |
          zip -r /$GITHUB_WORKSPACE/test.zip ./test/*
          ls
+
+      - name: Delete latest Release
+        uses: ame-yu/action-delete-latest-release@v2
+        with: 
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       # See: https://github.com/actions/upload-release-asset
       - name: Create Release
         id: create_release
