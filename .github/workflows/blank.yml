@@ -27,7 +27,7 @@ jobs:
         run: |
          zip -r /$GITHUB_WORKSPACE/test.zip ./test/*
          ls
-      
+      # See: https://github.com/actions/upload-release-asset
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -38,5 +38,15 @@ jobs:
           release_name: "latest"
           draf: false
           prerelease: false
+      - name: Upload Release Asset
+        id: upload_release_asset
+        uses: actions/upload-release-assest@v1
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with: 
+          upload_url: ${{ steps.create_release.outputs.upload_url}}
+          asset_path: ./test.zip
+          asset_name: test.zip
+          asset_content_type: application/zip
 
       
