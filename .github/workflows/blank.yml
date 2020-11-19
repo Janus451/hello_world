@@ -29,7 +29,7 @@ jobs:
          ls
 
       - name: Delete latest Release
-        uses: Janus451/delete_last_release@v1.4
+        uses: Janus451/delete_last_release@v1.5
         with: 
           github_token: ${{ secrets.GITHUB_TOKEN }}
          
