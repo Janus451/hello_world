@@ -26,6 +26,7 @@ jobs:
       - name: Build .zip file
         run: |
          zip -r /$GITHUB_WORKSPACE/test.zip ./test/*
+         zip -r /$GITHUB_WORKSPACE/test2.zip ./test/*
          ls
 
       - name: Delete latest Release
@@ -51,8 +52,18 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with: 
           upload_url: ${{ steps.create_release.outputs.upload_url}}
-          asset_path: ./test.zip
+          asset_path: ./test.zip 
           asset_name: test.zip
           asset_content_type: application/zip
+      - name: Upload Release Asset2
+        id: upload_release_asset2
+        uses: actions/upload-release-asset@v1
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with: 
+          upload_url: ${{ steps.create_release.outputs.upload_url}}
+          asset_path: ./test2.zip 
+          asset_name: test2.zip
+          asset_content_type: application/zip  
 
       
